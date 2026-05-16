@@ -1,5 +1,5 @@
-import globals from 'globals'
-import stylistic from '@stylistic/eslint-plugin'
+import globals from 'globals';
+import stylistic from '@stylistic/eslint-plugin';
 
 export default [
   {
@@ -20,4 +20,4 @@ export default [
       'no-console': 'off',
     },
   },
-]
+];
