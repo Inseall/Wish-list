@@ -70,6 +70,7 @@ const showWishes = (wishes) => {
     const priority = wish.priority === 'urgent' ? '🔴 Срочно' : '🔵 Когда-нибудь';
     console.log(`${index + 1}. ${status} ${wish.title} | ${priority}`);
     console.log(`   ${wish.description}`);
+    if (wish.photo) console.log(`   🔗 Фото: ${wish.photo}`);
     console.log(`   Добавлено: ${wish.date}`);
   });
 };
@@ -77,12 +78,14 @@ const showWishes = (wishes) => {
 const addWish = async (wishes) => {
   const title = await ask('Название желания: ');
   const description = await ask('Описание: ');
+  const photo = await ask('Ссылка на фото (или Enter чтобы пропустить): ');
   const priority = await ask('Приоритет (1 — Срочно, 2 — Когда-нибудь): ');
 
   const wish = {
     id: Date.now(),
     title: title.trim(),
     description: description.trim(),
+    photo: photo.trim() || null,
     priority: priority.trim() === '1' ? 'urgent' : 'someday',
     done: false,
     date: new Date().toLocaleDateString('ru-RU'),
@@ -177,4 +180,3 @@ const main = async () => {
 };
 
 main();
-
